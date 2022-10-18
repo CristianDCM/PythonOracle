@@ -15,6 +15,7 @@ def main(buscar_comida,tablero, culebrita, comida, mover_culebrita):
         mover_culebrita(culebrita, comida, tablero)
         if buscar_comida(posicion_actual, posicion_comida) == True:
             comida(tablero)
+            #Arreglar aumento de longitud de la culebrita
             longitud_culebrita.append(culebrita)
             total = len(longitud_culebrita)
             print("Puntuación: ", total)
@@ -31,14 +32,12 @@ def buscar_comida(posicion_actual, posicion_comida):
         return True
 
 def culebrita():
-        #hacer la culebrita un array
     culebrita = ("■")
     return culebrita
 
 def comida(tablero):
     global posicion_comida
     comida = ("✩")
-    #poner comida en el tablero
     posicion_comida = [random.randint(0,9), random.randint(0,9)]
     tablero[posicion_comida[0]][posicion_comida[1]] = comida
     
