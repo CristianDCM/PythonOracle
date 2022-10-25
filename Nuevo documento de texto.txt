@@ -1,5 +1,6 @@
 import random
-from pyfiglet import Figlet # Librery = pip install pyfiglet==0.7
+from pyfiglet import Figlet
+# Librery = pip install pyfiglet==0.7
 Font = Figlet(font='slant') 
 
 def main(): 
@@ -13,7 +14,7 @@ def main():
     # longitud_culebrita = 1
     while True:
         mover_culebrita(culebrita, comida, tablero) 
-        
+
         # cabeza_culebrita = [posicion_actual[0], posicion_actual[1]]
         # lista_culebrita.append(cabeza_culebrita) 
 
