@@ -1,6 +1,7 @@
 import cx_Oracle
 import tkinter as tk
 from tkinter import ttk
+from tkinter import *
 
 def Conexion_O():
     global con
@@ -29,60 +30,71 @@ def Mostrar_O():
     except:
         print("Error al Mostrar")
 
-ventana = tk.Tk()
+ventana = Tk()
 ventana.title("Conexion Oracle")
-ventana.geometry("600x400")
+ventana.geometry("600x480")
 
 boton = tk.Button(ventana, text="Conectar", command=Conexion_O)
-boton.pack()
+boton.place(x=10, y=10)
 #boton desconectar
 boton2 = tk.Button(ventana, text="Desconectar", command=Cerrar_O)
-boton2.pack()
+boton2.place(x=100, y=10)
 #boton mostrar
 boton3 = tk.Button(ventana, text="Mostrar", command=Mostrar_O)
-#Tabla
-tabla=ttk.Treeview(ventana, columns=("ID","NOMBRE","APELLIDO","EDAD", "SEXO", "CARRERA", "SEMESTRE"))
-boton3.pack()
-tabla.heading("#0", text="ID")
-tabla.heading("#1", text="NOMBRE")
-tabla.heading("#2", text="APELLIDO")
-tabla.heading("#3", text="EDAD")
-tabla.heading("#4", text="SEXO")
-tabla.heading("#5", text="CARRERA")
-tabla.heading("#6", text="SEMESTRE")
-tabla.pack()
-#Tamaño de las columnas
-tabla.column("#0", width=50)
-tabla.column("#1", width=120)
-tabla.column("#2", width=120)
-tabla.column("#3", width=60)
-tabla.column("#4", width=60)
-tabla.column("#5", width=110)
-tabla.column("#6", width=80)
+boton3.place(x=200, y=10)
 
-Etiqueta1 = tk.Label(ventana, text="Nombre")
-Etiqueta1.pack()
-Entry1 = tk.Entry(ventana)
-Entry1.pack()
-Etiqueta2 = tk.Label(ventana, text="Apellido")
-Etiqueta2.pack()
-Entry2 = tk.Entry(ventana)
-Entry2.pack()
-Etiqueta3 = tk.Label(ventana, text="Edad")
-Etiqueta3.pack()
-Entry3 = tk.Entry(ventana)
-Entry3.pack()
-Etiqueta4 = tk.Label(ventana, text="Sexo")
-Etiqueta4.pack()
-Entry4 = tk.Entry(ventana)
-Entry4.pack()
-Etiqueta5 = tk.Label(ventana, text="Carrera")
-Etiqueta5.pack()
-Entry5 = tk.Entry(ventana)
-Entry5.pack()
-Etiqueta6 = tk.Label(ventana, text="Semestre")
-Etiqueta6.pack()
-Entry6 = tk.Entry(ventana)
-Entry6.pack()
+tabla=ttk.Treeview(ventana, columns=("ID","NOMBRE","APELLIDO","EDAD", "SEXO", "CARRERA", "SEMESTRE"))
+tabla.place(x=10, y=50)
+#cammbiar tamaño de la tabla 
+tabla.column("#0", width=0, stretch=NO)
+tabla.column("ID", width=50, stretch=NO)
+tabla.column("NOMBRE", width=100, stretch=NO)
+tabla.column("APELLIDO", width=100, stretch=NO)
+tabla.column("EDAD", width=50, stretch=NO)
+tabla.column("SEXO", width=50, stretch=NO)
+tabla.column("CARRERA", width=100, stretch=NO)
+tabla.column("SEMESTRE", width=100, stretch=NO)
+
+tabla.heading("#0", text="", anchor=CENTER)
+tabla.heading("ID", text="ID", anchor=CENTER)
+tabla.heading("NOMBRE", text="NOMBRE", anchor=CENTER)
+tabla.heading("APELLIDO", text="APELLIDO", anchor=CENTER)
+tabla.heading("EDAD", text="EDAD", anchor=CENTER)
+tabla.heading("SEXO", text="SEXO", anchor=CENTER)
+tabla.heading("CARRERA", text="CARRERA", anchor=CENTER)
+tabla.heading("SEMESTRE", text="SEMESTRE", anchor=CENTER)
+
+frame = Frame(ventana)
+frame.place(x=10, y=300)
+
+frame.config(bd=1 , relief="sunken")
+
+id = Label(frame, text="ID")
+id.grid(row=0, column=0)
+Entry(frame).grid(row=0, column=1)
+
+nombre = Label(frame, text="NOMBRE")
+nombre.grid(row=0, column=2)
+Entry(frame).grid(row=0, column=3)
+
+apellido = Label(frame, text="APELLIDO")
+apellido.grid(row=2, column=0)
+Entry(frame).grid(row=2, column=1)
+
+edad = Label(frame, text="EDAD")
+edad.grid(row=2, column=2)
+Entry(frame).grid(row=2, column=3)
+
+sexo = Label(frame, text="SEXO")
+sexo.grid(row=4, column=0)
+Entry(frame).grid(row=4, column=1)
+
+carrera = Label(frame, text="CARRERA")
+carrera.grid(row=4, column=2)
+Entry(frame).grid(row=4, column=3)
+
+semestre = Label(frame, text="SEMESTRE")
+semestre.grid(row=6, column=0)
+Entry(frame).grid(row=6, column=1)
 
 ventana.mainloop()
