@@ -30,6 +30,18 @@ def Mostrar_O():
     except:
         print("Error al Mostrar")
 
+
+def insertar_O(nombre, apellido, edad, sexo, carrera, semestre):
+    try:
+        con = Conexion_O()
+        cursor = con.cursor()
+        cursor.execute(f"INSERT INTO ESTUDIANTES(NOMBRE,APELLIDO,EDAD,SEXO,CARRERA,SEMESTRE) VALUES('{nombre}','{apellido}','{edad}','{sexo}','{carrera}','{semestre}')")
+        con.commit()
+        cursor.close()
+        print("Insertado")
+    except:
+        print("Error al insertar")
+    
 ventana = Tk()
 ventana.title("Conexion Oracle")
 ventana.geometry("600x480")
@@ -66,35 +78,35 @@ tabla.heading("SEMESTRE", text="SEMESTRE", anchor=CENTER)
 
 frame = Frame(ventana)
 frame.place(x=10, y=300)
-
 frame.config(bd=1 , relief="sunken")
 
-id = Label(frame, text="ID")
-id.grid(row=0, column=0)
-Entry(frame).grid(row=0, column=1)
-
 nombre = Label(frame, text="NOMBRE")
-nombre.grid(row=0, column=2)
-Entry(frame).grid(row=0, column=3)
+nombre.grid(row=0, column=0)
+nombre_g = Entry(frame)
+nombre_g.grid(row=0, column=1)
 
 apellido = Label(frame, text="APELLIDO")
-apellido.grid(row=2, column=0)
-Entry(frame).grid(row=2, column=1)
+apellido.grid(row=0, column=2)
+apellido_g = Entry(frame).grid(row=0, column=3)
 
 edad = Label(frame, text="EDAD")
-edad.grid(row=2, column=2)
-Entry(frame).grid(row=2, column=3)
+edad.grid(row=0, column=4)
+edad_g = Entry(frame).grid(row=0, column=5)
 
 sexo = Label(frame, text="SEXO")
-sexo.grid(row=4, column=0)
-Entry(frame).grid(row=4, column=1)
+sexo.grid(row=1, column=0)
+sexo_g = Entry(frame).grid(row=1, column=1)
 
 carrera = Label(frame, text="CARRERA")
-carrera.grid(row=4, column=2)
-Entry(frame).grid(row=4, column=3)
+carrera.grid(row=1, column=2)
+carrera_g = Entry(frame).grid(row=1, column=3)
 
 semestre = Label(frame, text="SEMESTRE")
-semestre.grid(row=6, column=0)
-Entry(frame).grid(row=6, column=1)
+semestre.grid(row=1, column=4)
+semestre_g = Entry(frame).grid(row=1, column=5)
+
+boton4 = tk.Button(ventana, text="Insertar", command=insertar_O(nombre_g, apellido_g, edad_g, sexo_g, carrera_g, semestre_g))
+boton4.place(x=10, y=400)
+print(nombre_g)
 
 ventana.mainloop()
